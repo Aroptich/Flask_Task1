@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
     <header>
     <div class="header">
         <div class="header-logo">
             <a href="#">
-                <img class="logo" src="../static/images/logo/logo.png" alt="logo">
+                <img class="logo" src="{{ url_for('static', filename='images/logo/logo.png')}}" alt="logo">
             </a>
         </div>
         <nav class="menu-block">
@@ -31,14 +31,14 @@
     </div>
 </header>
     <main>
-        <img class="main-img" src="../static/images/main/hall.png" alt="hall">
+        <img class="main-img" src="{{url_for('static', filename='images/main/hall.png')}}" alt="hall">
     <div class="sub_menu">
         <p class="sub_menu__title">MENU</p>
         <a class="sub_menu__link" href="#"><span class="sub_menu__text">MAN</span></a>
         <ul class="sub_menu__list">
-            <li class="list__item"><a href="#">Одежда</a></li>
-            <li class="list__item"><a href="#">Обувь</a></li>
-            <li class="list__item"><a href="#">Куртка</a></li>
+            {% for item in menu -%}
+            <li class="list__item"><a href="{{item.url}}">{{item.name}}</a></li>
+            {% endfor -%}
         </ul>
     </div>
     </main>
@@ -90,6 +90,6 @@
         </div>
     </section>
     </footer>
-<script src="../static/js/main.js"></script>
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
 </html>
