@@ -1,26 +1,35 @@
 from flask import Flask, render_template
 
-
 app = Flask(__name__)
 
 sub_menu = [{"name": 'Одежда', "url": 'clothes'},
             {"name": 'Обувь', "url": 'shoes'},
-            {"name": 'Куртка', "url": 'jacket'},]
+            {"name": 'Куртка', "url": 'jacket'}, ]
+
 
 @app.route('/')
-def index():
-    return render_template('index.html', menu=sub_menu)
+def index(title='default'):
+    title="Fushion clothes"
+    return render_template('index.html', menu=sub_menu, title=title)
+
 
 @app.route('/clothes/')
-def clothes():
-    return "<h1>clothes</h1>"
+def clothes(title='default'):
+    title='clothes'
+    return render_template('clothes.html', menu=sub_menu, title=title)
+
 
 @app.route('/shoes/')
-def shoes():
-    return "<h1>shoes</h1>"
+def shoes(title='default'):
+    title = 'shoes'
+    return f"<h1>{title}</h1>"
+
 
 @app.route('/jacket/')
-def jackets():
-    return "<h1>jackets</h1>"
+def jackets(title='default'):
+    title = 'jacket'
+    return f"<h1>{title}</h1>"
+
+
 if __name__ == '__main__':
     app.run(debug=True)
