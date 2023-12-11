@@ -3,12 +3,13 @@
 {% block content %}
 {{ super() }}
 <section class="section-products">
-        <h2 class="title-products">Fetured Items</h2>
+        <h2 class="title-products">{{title}}</h2>
         <p class="text-products">Shop for items based on what we featured in this week</p>
         <div class="products-wrap">
+            {% for item in url -%}
             <div class="products">
                 <div class="product-img">
-                    <img class="image-card" src="../static/images/products/Rectangle 15 copy.jpg" alt="">
+                    <img class="image-card" src="../static/images/products/clothes/{{item}}" alt="">
                     <div class="product-img__wrap">
                         <button class="btn__wrap">
                             <svg class="icon_wrap" xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none">
@@ -27,6 +28,7 @@
                     <p class="price"><span>&#36;</span>52.00</p>
                 </div>
             </div>
+            {% endfor %}
         </div>
 </section>
 {% endblock %}

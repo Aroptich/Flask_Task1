@@ -15,8 +15,10 @@ def index(title='default'):
 
 @app.route('/clothes/')
 def clothes(title='default'):
+    import os
+    url =os.listdir('static/images/products/clothes')
     title='clothes'
-    return render_template('clothes.html', menu=sub_menu, title=title)
+    return render_template('clothes.html', menu=sub_menu, title=title, url=url)
 
 
 @app.route('/shoes/')
