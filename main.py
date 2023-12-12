@@ -1,4 +1,8 @@
+import os
+
 from flask import Flask, render_template
+
+
 
 app = Flask(__name__)
 
@@ -15,7 +19,6 @@ def index(title='default'):
 
 @app.route('/clothes/')
 def clothes(title='default'):
-    import os
     url =os.listdir('static/images/products/clothes')
     title='clothes'
     return render_template('clothes.html', menu=sub_menu, title=title, url=url)
@@ -23,14 +26,16 @@ def clothes(title='default'):
 
 @app.route('/shoes/')
 def shoes(title='default'):
+    url = os.listdir('static/images/products/shoes')
     title = 'shoes'
-    return f"<h1>{title}</h1>"
+    return render_template('shoes.html', menu=sub_menu, title=title, url=url)
 
 
 @app.route('/jacket/')
 def jackets(title='default'):
+    url = os.listdir('static/images/products/jacket')
     title = 'jacket'
-    return f"<h1>{title}</h1>"
+    return render_template('jackets.html', menu=sub_menu, title=title, url=url)
 
 
 if __name__ == '__main__':
